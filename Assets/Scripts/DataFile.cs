@@ -12,7 +12,7 @@ public class DataFile : MonoBehaviour
         _docPath = Environment.CurrentDirectory + "//DataFile.txt";
         
         WriteFile();
-        ReadFile();
+        //ReadFile();
     }
 
     private void WriteFile()
