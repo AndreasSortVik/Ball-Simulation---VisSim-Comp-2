@@ -1,0 +1,71 @@
+public class TriangleGeneration : MonoBehaviour
+{
+    [SerializeField] private Material red;
+    
+    private static Vector3[] _point =
+    {
+        new Vector3(0, 12, 0),
+        new Vector3(56, 8, 0),
+        new Vector3(0, 0.5f, 56),
+        new Vector3(56, 9, 56),
+        new Vector3(0, 0.5f, 112),
+        new Vector3(56, 11.5f, 112)
+    };
+    
+    private Vector3[] _triangleOneVertices =
+    {
+        _point[0],
+        _point[1],
+        _point[2]
+    };
+
+    private Vector3[] _triangleTwoVertices =
+    {
+        _point[1],
+        _point[2],
+        _point[3]
+    };
+
+    private Vector3[] _triangleThreeVertices =
+    {
+        _point[2],
+        _point[3],
+        _point[5]
+    };
+
+    private Vector3[] _triangleFourVertices =
+    {
+        _point[2],
+        _point[5],
+        _point[4]
+    };
+
+    private int[] _indices = { 0, 1, 2 };
+    
+    private void Start()
+    {
+        GenerateTriangle();
+    }
+
+    private void GenerateTriangle()
+    {
+        // Adds MeshFilter and MeshRenderer components to the GameObject
+        gameObject.AddComponent<MeshFilter>();
+        gameObject.AddComponent<MeshRenderer>();
+        
+        // Creates a new mesh
+        var triangleMesh = new Mesh
+        {
+            // Defines the vertices and triangles (indices)
+            vertices = _triangleOneVertices,
+            triangles = _indices
+        };
+        
+        // Recalculates normals for correct shading
+        triangleMesh.RecalculateNormals();
+
+        // Assigns the mesh to the MeshFilter component, and assigns the material to the MeshRenderer
+        GetComponent<MeshFilter>().mesh = triangleMesh;
+        GetComponent<MeshRenderer>().material = red;
+    }
+}
