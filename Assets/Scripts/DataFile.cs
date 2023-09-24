@@ -20,27 +20,27 @@ public class DataFile : MonoBehaviour
         string[] vertices =
         {
             "0 12 0",
-            "56 8 0",
             "0 0.5 56",
-            "56 9 56",
             "0 0.5 112",
+            "56 8 0",
+            "56 9 56",
             "56 11.5 112"
         };
 
         string[] indices =
         {
-            "0 1 2",
-            "1 3 2",
-            "2 3 5",
-            "2 5 4"
+            "0 1 3",
+            "1 4 3",
+            "1 5 4",
+            "1 2 5"
         };
 
         string[] neighbours =
         {
-            "1 -1 -1",
-            "0 -1 2",
-            "1 -1 3",
-            "2 -1 -1"
+            "-1 1 -1",
+            "2 -1 0",
+            "3 -1 1",
+            "-1 -1 2"
         };
         
         using StreamWriter outputFile = new StreamWriter(Path.Combine(_docPath));
